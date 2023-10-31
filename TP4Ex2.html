@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>TP4 Ex2</title>
+        <style>
+            body{
+                background-color: aqua;
+            }
+            #operators{
+                color:red;
+                background-color: whitesmoke;
+                padding-left:10px;
+                padding-right:10px;
+                padding-top:5px;
+                float:left;
+                width:70px;
+            }
+            .boxes{
+                float:right;
+                width:60%;
+            }
+            .mydiv{
+                border: 5px solid black;
+                padding:10px;
+                width:250px;
+                text-align: center; /* Horizontally center the button */
+                display: flex;
+                align-items: center;
+
+            }
+            #bold{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Vos données</h1>
+        <br>
+        <span>A= </span>
+        <input type="text" id="textbox1" disabled>
+        <span>B= </span>
+        <input type="text" id="textbox2" disabled>
+        <br><br>
+        <h1>Votre solution</h1>
+        <div class="mydiv">
+            <form>
+                <div>
+                    <span id="operators">A+B</span>
+                    <input type="text" class="boxes" id="textbox3"><br><br>
+                    <span id="operators">A-B</span>
+                    <input type="text" class="boxes" id="textbox4"><br><br>
+                    <span id="operators">A*B</span>
+                    <input type="text" class="boxes" id="textbox5"><br><br>
+                    <span id="operators">A/B</span>
+                    <input type="text" class="boxes" id="textbox6"><br><br>
+                </div>
+                <input type="submit" value="Vérifier" id="button1" onclick="verifier()">
+            </form>
+        </div>
+        <br><br><br>
+        <h1>La correction</h1><br>
+        <span id="bold">A+B</span><input type="text" id="box1" disabled>
+        <span id="bold">A-B</span><input type="text" id="box2" disabled>
+        <span id="bold">A*B</span><input type="text" id="box3" disabled>
+        <span id="bold">A/B</span><input type="text" id="box4" disabled>
+        <input type="submit" value="OK" onclick="OK()">
+            
+        <script>
+            var textbox1 = document.getElementById("textbox1");
+            var textbox2 = document.getElementById("textbox2");
+            var textbox3 = document.getElementById("textbox3");
+            var textbox4 = document.getElementById("textbox4");
+            var textbox5 = document.getElementById("textbox5");
+            var textbox6 = document.getElementById("textbox6");
+            var box1= document.getElementById("box1");
+            var box2= document.getElementById("box2");
+            var box3= document.getElementById("box3");
+            var box4= document.getElementById("box4");
+
+
+            textbox1.value=Math.floor(100*Math.random())
+            textbox2.value=Math.floor(100*Math.random())
+            var plus=parseInt(textbox1.value)+parseInt(textbox2.value);
+            var minus=parseInt(textbox1.value)-parseInt(textbox2.value);
+            var times=parseInt(textbox1.value)*parseInt(textbox2.value);
+            var division=Math.trunc(parseInt(textbox1.value)/parseInt(textbox2.value));
+
+            function verifier() {
+                var cnd1= parseInt(textbox3.value);
+                var cnd2= parseInt(textbox4.value);
+                var cnd3= parseInt(textbox5.value);
+                var cnd4= parseInt(textbox6.value);
+                if((cnd1===plus)&&(cnd2===minus)&&(cnd3===times)&&(cnd4===division))
+                alert("Very good! Your answers are all correct!");
+                else
+                alert("Pay attention! There was an error in your answer. Recalculate again");
+            }
+             
+            function OK(){
+                box1.value=plus;
+                box2.value=minus;
+                box3.value=times;
+                box4.value=division;
+            }
+            
+        </script>
+    </body>
+</html>
